@@ -5,7 +5,7 @@ namespace curriculum_2_12
     {
         static void Main(string[] args)
         {
-            
+            //test
         }
     }
 }
