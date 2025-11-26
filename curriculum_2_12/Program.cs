@@ -1,10 +1,11 @@
 ﻿using System;
-
-namespace curriculum_2_12;
-class Program
+namespace curriculum_2_12
 {
-    static void Main(string[] args)
+    class Program
     {
-
+        static void Main(string[] args)
+        {
+            
+        }
     }
 }
