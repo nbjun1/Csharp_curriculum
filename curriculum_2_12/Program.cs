@@ -24,7 +24,7 @@ namespace curriculum_2_12
 
             // int型変数名sumの初期値を0に設定
             int sum = 0;
-            // sumが100未満の間、繰り返し処理を実行
+            // sumが100以下の間、繰り返し処理を実行
             while (sum <= 100)
             {
                 Console.Write("数字を入力してください: ");
