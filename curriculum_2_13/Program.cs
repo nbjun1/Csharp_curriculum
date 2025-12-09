@@ -16,6 +16,7 @@ namespace curriculum_2_13
         }
         static void Main(string[] args)
         {
+            //enum(DayofWeek)の全要素を取得する
             foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
             {
                 Console.WriteLine(day);
