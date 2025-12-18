@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace curriculum_2_15
 {
-    public partial class Form1 : Form
+    public partial class 課題Form : Form
     {
-        public Form1()
+        public 課題Form()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
