@@ -10,14 +10,24 @@ using System.Windows.Forms;
 
 namespace curriculum_2_15
 {
-    public partial class 課題Form : Form
+    public partial class Form1 : Form
     {
-        public 課題Form()
+        public Form1()
         {
             InitializeComponent();
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
