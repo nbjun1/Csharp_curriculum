@@ -6,7 +6,7 @@ namespace curriculum_2_17
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("HelloWorld");
 
             // ②コンソールで2つの文字列を入力し、その文字列を結合した文字列を出力するプログラム
             Console.Write("コンソールに文字列１を入力：");
