@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace curriculum_2_21
 {
     class Program
