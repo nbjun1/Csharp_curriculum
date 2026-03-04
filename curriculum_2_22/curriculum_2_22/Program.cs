@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Curriculum_2_22
+namespace curriculum_2_22
 {
     
     // 1. 単一責任の原則 (SRP)
+    // 社員名と勤務時間を持つ
     public class Report
     {
         public string EmployeeName { get; set; }
