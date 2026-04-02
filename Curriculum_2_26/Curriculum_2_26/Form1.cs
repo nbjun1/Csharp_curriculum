@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection.Emit;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Curriculum_2_26
 {
@@ -17,19 +13,58 @@ namespace Curriculum_2_26
             InitializeComponent();
         }
 
-        // ボタンクリックイベント
-        private void btnAnalyze_Click(object sender, EventArgs e)
+        // --- 課題１の処理 ---
+
+        // ボタン１（課題１）クリック時
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // 数値に変換できるかチェック
+            if (int.TryParse(textBox1.Text, out int num))
+            {
+                bool isEven = num % 2 == 0; // 2の倍数か判定
+
+                if (num < 5)
+                {
+                    label1.Text = isEven ? "5より小さい2の倍数" : "5より小さい2の倍数ではない";
+                }
+                else
+                {
+                    label1.Text = isEven ? "5以上　2の倍数" : "5以上　2の倍数ではない";
+                }
+            }
+            else
+            {
+                label1.Text = "数値を入力してください";
+            }
+        }
+
+        // 入力制限：数値のみ（textBox1のKeyPressイベントに紐付け）
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // 0-9の数字、およびバックスペース以外の入力を無効化する
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        // --- 課題２の処理 ---
+
+        // ボタン２（課題２）クリック時
+        private void button2_Click(object sender, EventArgs e)
         {
             // 入力があるか確認
-            if (string.IsNullOrWhiteSpace(txtInput2.Text))
+            if (string.IsNullOrEmpty(textBox2.Text))
             {
-                lblMessage.Text = "からっぽ";
-                lblMessage.ForeColor = Color.Yellow;
-                return;
+                label2.Text = "からっぽ";
+                label2.ForeColor = Color.Yellow;
             }
-
-            // 入力がある場合はチェック用メソッドを呼び出し
-            CheckInputContent(txtInput2.Text);
+            else
+            {
+                // 入力がある場合はチェック用メソッドを呼び出し
+                CheckInputContent(textBox2.Text);
+            }
         }
 
         // 入力内容チェック用のメソッド
@@ -38,26 +73,26 @@ namespace Curriculum_2_26
             bool hasMountain = input.Contains("山");
             bool hasSea = input.Contains("海");
 
-            // 条件判定（両方含まれるケースを最優先にする）
+            // 条件判定（両方含まれるケースを最優先にするのがコツです！）
             if (hasMountain && hasSea)
             {
-                lblMessage.Text = "どちらも含まれている";
-                lblMessage.ForeColor = Color.Red;
+                label2.Text = "どちらも含まれている";
+                label2.ForeColor = Color.Red;
             }
             else if (hasMountain)
             {
-                lblMessage.Text = "山が含まれている";
-                lblMessage.ForeColor = Color.Green;
+                label2.Text = "山が含まれている";
+                label2.ForeColor = Color.Green;
             }
             else if (hasSea)
             {
-                lblMessage.Text = "海が含まれている";
-                lblMessage.ForeColor = Color.Blue;
+                label2.Text = "海が含まれている";
+                label2.ForeColor = Color.Blue;
             }
             else
             {
-                lblMessage.Text = "どちらも含まれてない";
-                lblMessage.ForeColor = Color.Black;
+                label2.Text = "どちらも含まれてない";
+                label2.ForeColor = Color.Black;
             }
         }
     }
