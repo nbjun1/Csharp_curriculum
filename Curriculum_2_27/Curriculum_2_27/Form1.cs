@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
 
@@ -10,6 +11,9 @@ namespace Curriculum_2_27
         public Form1()
         {
             InitializeComponent();
+            // タイマーを有効にして、現在時刻の表示を開始
+            timer1.Enabled = true;
+            timer1.Interval = 1000; // 1秒ごとにTickイベントを発生させる
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -26,21 +30,7 @@ namespace Curriculum_2_27
                 }
             }
 
-            string path = textBox1.Text;
-
-            if (System.IO.File.Exists(path))
-            {
-                // ファイルを全て読み込んでラベルに表示
-                label3.Text = System.IO.File.ReadAllText(path, Encoding.UTF8);
-            }
-            else
-            {
-                // エラーメッセージを表示[cite: 1]
-                MessageBox.Show(Message_manage.Msg2, Message_manage.Title4);
-            }
         }
-
-
 
         // 「読込」ボタン（項番7）をダブルクリックして作成
         private void Button2_Click(object sender, EventArgs e)
@@ -49,12 +39,12 @@ namespace Curriculum_2_27
 
             if (System.IO.File.Exists(path))
             {
-                // ファイル内容をラベル（項番5）に表示
-                label3.Text = System.IO.File.ReadAllText(path, System.Text.Encoding.UTF8);
+                // 読み込んだテキストを label3 に代入
+                label3.Text = System.IO.File.ReadAllText(path, Encoding.UTF8);
             }
             else
             {
-                // 「ファイルまたはフォルダが存在しません」を表示
+                // エラーメッセージを表示
                 MessageBox.Show(Message_manage.Msg2, Message_manage.Title4);
             }
         }
@@ -80,8 +70,8 @@ namespace Curriculum_2_27
         }
 
         private void Button4_Click(object sender, EventArgs e) { label4.BackColor = Color.Yellow; }
-        private void Button5_Click(object sender, EventArgs e) { label4.BackColor = Color.Green; }
-        private void Button6_Click(object sender, EventArgs e) { label4.BackColor = Color.Blue; }
+        private void Button5_Click(object sender, EventArgs e) { label4.BackColor = Color.LightGreen; }
+        private void Button6_Click(object sender, EventArgs e) { label4.BackColor = Color.LightBlue; }
 
         private void Button7_Click(object sender, EventArgs e)
         {
@@ -101,10 +91,50 @@ namespace Curriculum_2_27
             }
         }
 
+        // 項番16: PUSHボタン (Form3への遷移)
+        private void Button8_Click(object sender, EventArgs e)
+        {
+            // Form3をインスタンス化
+            using (Form3 f3 = new Form3())
+            {
+                // モーダルダイアログとして表示
+                f3.ShowDialog();
+            }
+        }
+
         private void Timer1_Tick(object sender, EventArgs e)
         {
             // 現在時刻を「HH:mm:ss」形式で表示
             label5.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        // label5 の Paint イベント内
+        private void Label5_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle rect = label5.ClientRectangle;
+
+            using (LinearGradientBrush brush = new LinearGradientBrush(
+                rect,
+                Color.White,           // 1. 開始色を「白」に
+                Color.Blue,            // 2. 終了色を「青」に
+                LinearGradientMode.Vertical)) // 3. 方向を「垂直（上から下）」に
+            {
+                e.Graphics.FillRectangle(brush, rect);
+            }
+
+            TextRenderer.DrawText(
+                e.Graphics,
+                label5.Text,
+                label5.Font,
+                rect,
+                Color.White,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+            );
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

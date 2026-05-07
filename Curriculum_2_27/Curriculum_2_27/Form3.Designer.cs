@@ -72,14 +72,14 @@
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(120, 180);
+            this.panel1.Size = new System.Drawing.Size(144, 180);
             this.panel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.label1.Location = new System.Drawing.Point(71, 151);
+            this.label1.Location = new System.Drawing.Point(91, 151);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(3, 0, 0, 3);
             this.label1.Size = new System.Drawing.Size(34, 15);
@@ -96,6 +96,7 @@
             this.radioButton7.TabStop = true;
             this.radioButton7.Text = "Sun";
             this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.RadioButtons_CheckedChanged);
             // 
             // radioButton6
             // 
@@ -107,6 +108,7 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Sat";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.RadioButtons_CheckedChanged);
             // 
             // radioButton5
             // 
@@ -118,6 +120,7 @@
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Fri";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.RadioButtons_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -129,6 +132,7 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Thu";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.RadioButtons_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -140,6 +144,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Wed";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.RadioButtons_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -151,6 +156,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Tue";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.RadioButtons_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -162,6 +168,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Mon";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.RadioButtons_CheckedChanged);
             // 
             // panel2
             // 
@@ -170,16 +177,16 @@
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.radioButton9);
             this.panel2.Controls.Add(this.radioButton8);
-            this.panel2.Location = new System.Drawing.Point(138, 12);
+            this.panel2.Location = new System.Drawing.Point(162, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(180, 70);
+            this.panel2.Size = new System.Drawing.Size(210, 70);
             this.panel2.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.label2.Location = new System.Drawing.Point(132, 41);
+            this.label2.Location = new System.Drawing.Point(162, 41);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 3);
             this.label2.Size = new System.Drawing.Size(34, 15);
@@ -189,11 +196,11 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(91, 16);
+            this.comboBox1.Location = new System.Drawing.Point(121, 16);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(75, 20);
             this.comboBox1.TabIndex = 2;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // radioButton9
             // 
@@ -205,6 +212,7 @@
             this.radioButton9.TabStop = true;
             this.radioButton9.Text = "Years";
             this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButton9.CheckedChanged += new System.EventHandler(this.RadioButton_Switch_CheckedChanged);
             // 
             // radioButton8
             // 
@@ -216,6 +224,7 @@
             this.radioButton8.TabStop = true;
             this.radioButton8.Text = "Days";
             this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.RadioButton_Switch_CheckedChanged);
             // 
             // panel3
             // 
@@ -224,21 +233,23 @@
             this.panel3.Controls.Add(this.checkBox3);
             this.panel3.Controls.Add(this.checkBox2);
             this.panel3.Controls.Add(this.checkBox1);
-            this.panel3.Location = new System.Drawing.Point(138, 95);
+            this.panel3.Location = new System.Drawing.Point(162, 95);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(180, 97);
+            this.panel3.Size = new System.Drawing.Size(210, 97);
             this.panel3.TabIndex = 2;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Yellow;
-            this.button1.Location = new System.Drawing.Point(129, 54);
+            this.button1.Location = new System.Drawing.Point(137, 56);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 35);
+            this.button1.Size = new System.Drawing.Size(59, 35);
             this.button1.TabIndex = 3;
-            this.button1.Text = "button";
+            this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.MouseEnter += new System.EventHandler(this.Button1_MouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.Button1_MouseLeave);
             // 
             // checkBox3
             // 
@@ -249,6 +260,7 @@
             this.checkBox3.TabIndex = 2;
             this.checkBox3.Text = "ラベル表示確認";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -259,6 +271,7 @@
             this.checkBox2.TabIndex = 1;
             this.checkBox2.Text = "コンボボックス確認";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -269,6 +282,7 @@
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "ラジオボタン確認";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // panel5
             // 
@@ -279,7 +293,7 @@
             this.panel5.Controls.Add(this.panel4);
             this.panel5.Location = new System.Drawing.Point(12, 201);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(306, 148);
+            this.panel5.Size = new System.Drawing.Size(360, 148);
             this.panel5.TabIndex = 3;
             // 
             // radioButton12
@@ -292,6 +306,7 @@
             this.radioButton12.TabStop = true;
             this.radioButton12.Text = "Center";
             this.radioButton12.UseVisualStyleBackColor = true;
+            this.radioButton12.CheckedChanged += new System.EventHandler(this.RadioButton_Layout_CheckedChanged);
             // 
             // radioButton11
             // 
@@ -303,6 +318,7 @@
             this.radioButton11.TabStop = true;
             this.radioButton11.Text = "Stretch";
             this.radioButton11.UseVisualStyleBackColor = true;
+            this.radioButton11.CheckedChanged += new System.EventHandler(this.RadioButton_Layout_CheckedChanged);
             // 
             // radioButton10
             // 
@@ -314,6 +330,7 @@
             this.radioButton10.TabStop = true;
             this.radioButton10.Text = "Zoom";
             this.radioButton10.UseVisualStyleBackColor = true;
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.RadioButton_Layout_CheckedChanged);
             // 
             // panel4
             // 
@@ -328,7 +345,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(334, 361);
+            this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -336,6 +353,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3";
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
