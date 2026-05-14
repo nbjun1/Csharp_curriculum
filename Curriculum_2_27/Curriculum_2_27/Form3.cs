@@ -21,38 +21,37 @@ namespace Curriculum_2_27
         // --- 項番1: ロードイベント ---
         private void Form3_Load(object sender, EventArgs e)
         {
+            // 1. まずフラグを false にし、初期化中のイベント動作を完全にブロック
             isLoaded = false;
 
-            // 項番3: 曜日のラジオボタンにテキストを設定
+            // 2. テキスト設定やコンボボックスの初期化を行う（この時点ではラベルが変わっても無視される）
             radioButton1.Text = daysArray[1];
-            radioButton2.Text = daysArray[2];
-            radioButton3.Text = daysArray[3];
-            radioButton4.Text = daysArray[4];
-            radioButton5.Text = daysArray[5];
-            radioButton6.Text = daysArray[6];
             radioButton7.Text = daysArray[7];
 
-            // 項番6: コンボボックス初期化（Daysの内容を追加）
             comboBox1.Items.Clear();
             for (int i = 1; i < daysArray.Length; i++)
             {
                 comboBox1.Items.Add(daysArray[i]);
             }
 
-            // 項番12: パネルに画像を表示
             DisplayImageOnPanel();
 
-            // ラジオボタンの選択をリセット（最初はどれも選ばれていない状態にする）
+            // 3. ラジオボタンのリセット
             ResetRadioButtons();
 
-            // 項番4, 8: ラベルの初期表示を確実に "Days" に固定
+            // 4. 【重要】全ての処理が終わった「最後」に、ラベルを "Days" で上書きする
+            // これにより、もし手順3で意図せずイベントが動いてラベルが変わっていても、ここで修正されます。
             label1.Text = "Days";
             label2.Text = "Days";
 
-            // 項番10: 初期状態はボタンを無効化
+            // 5. ラジオボタンへの自動フォーカスを外す
+            this.ActiveControl = label1;
+
+            // 6. 初期状態のボタン色と有効化設定
+            button1.BackColor = Color.Yellow;
             button1.Enabled = false;
 
-            // 準備完了
+            // 7. すべてが整ったところで、フラグを true にしてユーザー操作を許可する
             isLoaded = true;
         }
 
