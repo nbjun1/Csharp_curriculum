@@ -27,8 +27,7 @@ namespace Curriculum_2_27
             // label3の内容を「,」で分割
             string[] splitText = label3.Text.Split(',');
 
-            // 分割した結果を各テキストボックス（項番9～12）に配置
-            // 要素が足りない場合に備えて、インデックスの範囲内かチェックして代入します
+            // 配列の要素数が足りない場合に備え、インデックスの範囲内かを判定して代入（インデックス範囲外エラーの防止）
             if (splitText.Length > 0) textBox1.Text = splitText[0];
             if (splitText.Length > 1) textBox2.Text = splitText[1];
             if (splitText.Length > 2) textBox3.Text = splitText[2];
@@ -38,6 +37,7 @@ namespace Curriculum_2_27
         // 項番14: 空白削除A（前後空白削除）
         private void Button2_Click(object sender, EventArgs e)
         {
+            // 各テキストボックスの文字列の前後にある空白を削除（Trim処理）
             textBox1.Text = textBox1.Text.Trim();
             textBox2.Text = textBox2.Text.Trim();
             textBox3.Text = textBox3.Text.Trim();
@@ -47,6 +47,7 @@ namespace Curriculum_2_27
         // 項番15: 空白削除B（全空白削除）
         private void Button3_Click(object sender, EventArgs e)
         {
+            // 半角・全角の両方のスペースを対象に、文字列内すべての空白を置換により除去
             textBox1.Text = textBox1.Text.Replace(" ", "").Replace("　", "");
             textBox2.Text = textBox2.Text.Replace(" ", "").Replace("　", "");
             textBox3.Text = textBox3.Text.Replace(" ", "").Replace("　", "");
@@ -69,7 +70,7 @@ namespace Curriculum_2_27
         // 項番22: Loopボタン（階段状の文字列作成）
         private void Button5_Click(object sender, EventArgs e)
         {
-            // コンボボックス等から選択された数値を取得（例: numericUpDown1 や comboBox の値）
+            // コンボボックス等から選択された数値を取得
             int selectedNumber = (int)numericUpDown1.Value;
 
             // 結果を格納する変数（TextBoxやLabelに表示することを想定）
@@ -96,7 +97,7 @@ namespace Curriculum_2_27
         // 項番23: Closeボタン
         private void Button6_Click(object sender, EventArgs e)
         {
-            // 21のテキストボックスの内容をプロパティにセットして閉じる
+            // 呼び出し元（Form1）へデータを引き渡すため、プロパティに現在の値を退避させてから画面を閉じる
             this.ReturnValue = textBox5.Text;
             this.Close();
         }

@@ -13,7 +13,8 @@ namespace Curriculum_2_27
             InitializeComponent();
             // タイマーを有効にして、現在時刻の表示を開始
             timer1.Enabled = true;
-            timer1.Interval = 1000; // 1秒ごとにTickイベントを発生させる
+            // 1秒ごとにTickイベントを発生させる
+            timer1.Interval = 1000;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -36,7 +37,7 @@ namespace Curriculum_2_27
         {
             string path = textBox1.Text;
 
-            // テキストボックスが空、または空白スペースのみの場合は読み込みを中止する
+            // 未入力（スペースのみ含む）の制限と、ファイルの実在確認
             if (!string.IsNullOrWhiteSpace(path) && System.IO.File.Exists(path))
             {
                 try
@@ -46,7 +47,7 @@ namespace Curriculum_2_27
                 }
                 catch (Exception ex)
                 {
-                    //  読み込みに失敗した場合は、システムエラー（ex.Message）と既存のタイトルのみで構成
+                    // ファイルロックや権限エラーによる異常終了を防ぐための例外処理、システム生成のエラー文（ex.Message）を出力
                     MessageBox.Show(ex.Message, Message_manage.Title4);
                 }
             }
@@ -78,13 +79,15 @@ namespace Curriculum_2_27
         private void Button5_Click(object sender, EventArgs e) { label4.BackColor = Color.LightGreen; }
         private void Button6_Click(object sender, EventArgs e) { label4.BackColor = Color.LightBlue; }
 
+        // --- 項番14: ファイル更新ボタン ---
         private void Button7_Click(object sender, EventArgs e)
         {
             string path = textBox1.Text;
 
-            // パスが未選択、または空白スペースのみの場合
+            // パス未選択の状態で書き込み処理が実行されるのを防ぐガード処理
             if (string.IsNullOrWhiteSpace(path))
             {
+                // 既存の共通変数（Msg2）を流用
                 MessageBox.Show(Message_manage.Msg2, Message_manage.Title4);
                 return;
             }
@@ -96,7 +99,7 @@ namespace Curriculum_2_27
             }
             catch (Exception ex)
             {
-                // 読込時と同様、システムエラー（ex.Message）と既存のタイトルのみで構成
+                // 書き込み失敗時の例外処理（動的なシステムエラー内容を表示）
                 MessageBox.Show(ex.Message, Message_manage.Title4);
             }
         }
