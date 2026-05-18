@@ -29,22 +29,29 @@ namespace Curriculum_2_27
                     textBox1.Text = ofd.FileName; // パスをテキストボックスに表示
                 }
             }
-
         }
 
-        // 「読込」ボタン（項番7）をダブルクリックして作成
+        // --- 項番7: 読込ボタン ---
         private void Button2_Click(object sender, EventArgs e)
         {
             string path = textBox1.Text;
 
-            if (System.IO.File.Exists(path))
+            // テキストボックスが空、または空白スペースのみの場合は読み込みを中止する
+            if (!string.IsNullOrWhiteSpace(path) && System.IO.File.Exists(path))
             {
-                // 読み込んだテキストを label3 に代入
-                label3.Text = System.IO.File.ReadAllText(path, Encoding.UTF8);
+                try
+                {
+                    // ファイルの内容を読み込んで、label3に表示
+                    label3.Text = System.IO.File.ReadAllText(path, Encoding.UTF8);
+                }
+                catch (Exception ex)
+                {
+                    //  読み込みに失敗した場合は、システムエラー（ex.Message）と既存のタイトルのみで構成
+                    MessageBox.Show(ex.Message, Message_manage.Title4);
+                }
             }
             else
             {
-                // エラーメッセージを表示
                 MessageBox.Show(Message_manage.Msg2, Message_manage.Title4);
             }
         }
@@ -57,13 +64,11 @@ namespace Curriculum_2_27
             if (result == DialogResult.OK)
             {
                 // Form2を生成。コンストラクタでlabel3のテキストを渡す
-                // ※Form2側のコンストラクタ改造が必要です
                 using (Form2 f2 = new Form2(label3.Text))
                 {
                     f2.ShowDialog(); // モーダルで表示
 
                     // Form2が閉じられた後、21のテキストボックスの内容を10のラベルに表示
-                    // ※Form2側に公開プロパティ（ReturnValue等）を作る必要があります
                     label4.Text = f2.ReturnValue;
                 }
             }
@@ -75,18 +80,23 @@ namespace Curriculum_2_27
 
         private void Button7_Click(object sender, EventArgs e)
         {
+            string path = textBox1.Text;
+
+            // パスが未選択、または空白スペースのみの場合
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                MessageBox.Show(Message_manage.Msg2, Message_manage.Title4);
+                return;
+            }
+
             try
             {
-                string path = textBox1.Text;
-                // label4の内容で上書き
                 System.IO.File.WriteAllText(path, label4.Text, Encoding.UTF8);
-
-                // 完了メッセージ「ファイルを上書きしました」
                 MessageBox.Show(Message_manage.Msg3, Message_manage.Title2);
             }
             catch (Exception ex)
             {
-                // 書き込み失敗時のエラー表示
+                // 読込時と同様、システムエラー（ex.Message）と既存のタイトルのみで構成
                 MessageBox.Show(ex.Message, Message_manage.Title4);
             }
         }
