@@ -62,11 +62,6 @@ namespace Curriculum_2_27
             textBox5.Text = combined;
         }
 
-        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         // 項番22: Loopボタン（階段状の文字列作成）
         private void Button5_Click(object sender, EventArgs e)
         {
