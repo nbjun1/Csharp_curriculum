@@ -92,8 +92,13 @@ namespace Curriculum_2_27
         // 項番23: Closeボタン
         private void Button6_Click(object sender, EventArgs e)
         {
-            // 呼び出し元（Form1）へデータを引き渡すため、プロパティに現在の値を退避させてから画面を閉じる
-            this.ReturnValue = textBox5.Text;
+            // 呼び出し元（Form1）へデータを引き渡すため、プロパティに現在の値を退避
+            ReturnValue = textBox5.Text;
+
+            // Form1に対して「処理が正常に完了した」というステータス（合図）を返す
+            this.DialogResult = DialogResult.OK;
+
+            // 画面を閉じる
             this.Close();
         }
 

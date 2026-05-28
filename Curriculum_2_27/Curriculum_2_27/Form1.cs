@@ -11,10 +11,15 @@ namespace Curriculum_2_27
         public Form1()
         {
             InitializeComponent();
-            // タイマーを有効にして、現在時刻の表示を開始
-            timer1.Enabled = true;
-            // 1秒ごとにTickイベントを発生させる
+
+            // 定期実行（Tickイベント）時の処理を紐付け
+            timer1.Tick += Timer1_Tick;
+
+            // 1秒ごとにTickイベントを発生させる（間隔を先に設定）
             timer1.Interval = 1000;
+
+            // タイマーを有効にして、現在時刻の表示を開始（最後にスイッチを入れる）
+            timer1.Enabled = true;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -67,10 +72,12 @@ namespace Curriculum_2_27
                 // Form2を生成。コンストラクタでlabel3のテキストを渡す
                 using (Form2 f2 = new Form2(label3.Text))
                 {
-                    f2.ShowDialog(); // モーダルで表示
-
-                    // Form2が閉じられた後、21のテキストボックスの内容を10のラベルに表示
-                    label4.Text = f2.ReturnValue;
+                    // 画面が正常（OK）に閉じられた場合のみデータを受け取るガード処理
+                    if (f2.ShowDialog() == DialogResult.OK)
+                    {
+                        // Form2から返ってきた内容をラベルに表示
+                        label4.Text = f2.ReturnValue;
+                    }
                 }
             }
         }
