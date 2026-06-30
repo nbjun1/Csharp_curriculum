@@ -32,7 +32,7 @@ namespace Curriculum_2_27
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     // テキストボックス（項番4）にパスを表示
-                    textBox1.Text = ofd.FileName; // パスをテキストボックスに表示
+                    textBox1.Text = ofd.FileName;
                 }
             }
         }

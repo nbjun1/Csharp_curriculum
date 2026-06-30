@@ -1,17 +1,13 @@
 ﻿using System;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Curriculum_2_27
 {
     public partial class Form2 : Form
     {
-        // Form1に戻すための値を保持するプロパティ
-        public string ReturnValue { get; private set; }
-
-        public Form2()
-        {
-            InitializeComponent();
-        }
+        // Form1に戻すための値を保持するプロパティ 初期値（空文字）を設定して null 落ちを防ぐ
+        public string ReturnValue { get; private set; } = string.Empty;
 
         // Form1からの引数を受け取るコンストラクタ
         public Form2(string sendText)
@@ -65,28 +61,25 @@ namespace Curriculum_2_27
         // 項番22: Loopボタン（階段状の文字列作成）
         private void Button5_Click(object sender, EventArgs e)
         {
-            // コンボボックス等から選択された数値を取得
             int selectedNumber = (int)numericUpDown1.Value;
 
-            // 結果を格納する変数（TextBoxやLabelに表示することを想定）
-            string result = "";
+            // 文字列結合の連続ループ StringBuilder を使用
+            StringBuilder sb = new StringBuilder();
 
-            // 外側のループ：行数を決める（0から選択した数字まで）
+            // 外側のループ：行数を決める
             for (int i = 0; i <= selectedNumber; i++)
             {
                 // 内側のループ：各行の中身を作る
                 for (int j = 0; j <= i; j++)
                 {
-                    // 数字を順番に足していく
-                    result += j.ToString();
+                    sb.Append(j); // 文字列を後ろに付け足す
                 }
 
-                // 1行終わるごとに改行を入れる
-                result += Environment.NewLine;
+                sb.AppendLine(); // 1行終わるごとに改行を入れる
             }
 
-            // テキストボックス等に表示
-            richTextBox1.Text = result;
+            // テキストボックスに表示
+            richTextBox1.Text = sb.ToString();
         }
 
         // 項番23: Closeボタン
